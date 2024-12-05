@@ -1,7 +1,11 @@
+import { useFetchMovies } from "../../hooks/useFetchMovies";
 import { useFetchGenres } from "../../hooks/useFetchGenres";
 
 export const MoviesAndShowsSection = () => {
   const { data: isGenres, isLoading, isError } = useFetchGenres();
+  const { data: movies } = useFetchMovies();
+
+  console.log(actionMovies);
 
   if (isLoading) {
     return <p>Carregando generos.</p>;
@@ -16,7 +20,7 @@ export const MoviesAndShowsSection = () => {
         <h2>Our Genres</h2>
         <div>
           {isGenres.genres.map((genre, id: number) => (
-            <div key={id}>{genre.name}</div>
+            <h2 key={id}>{genre.name}</h2>
           ))}
         </div>
       </div>
